@@ -1,27 +1,57 @@
 public class Ahorcado {
     private String palabraSecreta;
     private StringBuilder palabraOculta;
+    private int intentosIncorrectos;
+    private int maxIntentosIncorrectos;
+
+    public Ahorcado() {
+        this(6); //Número de intentos permitidos
+    }
+
+    public Ahorcado(int maxIntentos) {
+        this.maxIntentosIncorrectos = maxIntentos;
+        this.intentosIncorrectos = 0;
+    }
 
     public void iniciarJuego(String palabraSecreta) {
         this.palabraSecreta = palabraSecreta;
         this.palabraOculta = new StringBuilder();
         for (int i = 0; i < palabraSecreta.length(); i++) {
-            palabraOculta.append("_");
+            this.palabraOculta.append('_');
         }
+    }
+
+    public String obtenerPalabraSecreta() {
+        return palabraSecreta;
     }
 
     public boolean adivinarLetra(char letra) {
         boolean letraAdivinada = false;
-        for (int i = 0; i < palabraSecreta.length(); i++) {
-            if (palabraSecreta.charAt(i) == letra) {
-                palabraOculta.setCharAt(i, letra);
-                letraAdivinada = true;
+        if (!juegoTerminado()) {
+            boolean letraCorrecta = false;
+            for (int i = 0; i < palabraSecreta.length(); i++) {
+                if (palabraSecreta.charAt(i) == letra) {
+                    palabraOculta.setCharAt(i, letra);
+                    letraCorrecta = true;
+                }
             }
+            if (!letraCorrecta) {
+                intentosIncorrectos++;
+            }
+            letraAdivinada = letraCorrecta;
         }
         return letraAdivinada;
     }
 
     public String obtenerPalabraOculta() {
         return palabraOculta.toString();
+    }
+
+    public boolean juegoTerminado() {
+        return palabraOculta.toString().equals(palabraSecreta) || juegoTerminadoPorMaximosIntentos();
+    }
+
+    public boolean juegoTerminadoPorMaximosIntentos() {
+        return intentosIncorrectos >= maxIntentosIncorrectos;
     }
 }

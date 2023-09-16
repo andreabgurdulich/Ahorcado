@@ -4,19 +4,19 @@ public class JuegoAhorcado {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Ahorcado juego = new Ahorcado(); // Crea un juego de ahorcado con valores predeterminados
+        Ahorcado juego = new Ahorcado(); //Iniciamos el ahorcado con valores predeterminados
         
-        System.out.println("Bienvenido al juego del ahorcado!");
+        System.out.println("¡Comencemos!");
         
-        // Inicia un nuevo juego con una palabra secreta
-        System.out.print("Ingresa la palabra secreta: ");
-        String palabraSecreta = scanner.nextLine();
-        juego.iniciarJuego(palabraSecreta);
+        //Solicitamos palabra a adivinar
+        System.out.print("Ingresa la palabra a adivinar: ");
+        String palabraAAdivinar = scanner.nextLine();
+        juego.iniciarJuego(palabraAAdivinar);
         
-        // Bucle principal del juego
+        // Empieza iteración juego
         while (!juego.juegoTerminado()) {
             System.out.println("Palabra actual: " + juego.obtenerPalabraOculta());
-            System.out.print("Adivina una letra: ");
+            System.out.print("Elige una letra: ");
             char letra = scanner.nextLine().charAt(0);
             
             if (juego.adivinarLetra(letra)) {
@@ -28,9 +28,9 @@ public class JuegoAhorcado {
         
         // Mostrar resultado del juego
         if (juego.juegoTerminadoPorMaximosIntentos()) {
-            System.out.println("Perdiste. La palabra secreta era: " + juego.obtenerPalabraSecreta());
+            System.out.println("Perdiste. La palabra a adivinar era: " + juego.obtenerPalabraAAdivinar());
         } else {
-            System.out.println("¡Felicidades! Has adivinado la palabra secreta: " + juego.obtenerPalabraSecreta());
+            System.out.println("¡Felicidades! Has adivinado la palabra: " + juego.obtenerPalabraAAdivinar());
         }
         
         scanner.close();

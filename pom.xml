@@ -1,11 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>project002</groupId>
-    <artifactId>project002</artifactId>
+    <groupId>Ahorcado</groupId>
     <version>1.0</version>
     <packaging>jar</packaging>
-    <name>project002</name>
+    <name>Ahorcado</name>
     <url>http://maven.apache.org</url>
     <developers>
         <developer>
@@ -28,8 +27,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>2.3.1</version>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <source>1.7</source>
+                    <target>1.7</target>
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
@@ -45,4 +44,6 @@
             </plugin>
         </plugins>
     </build>
+    <artifactId>Ahorcado</artifactId>
+    <description>		</description>
 </project>
